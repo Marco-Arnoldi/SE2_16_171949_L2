@@ -1,20 +1,27 @@
+//variabili globali
+var visibile = false;               // per memorizzare la visibilita dei campi di input
+var n_articoli_max = 30;            // limite massimo di articolo all'interno della tabella
+var riga = 1;                       // per tenere traccia della riga del prossimo aricolo   
+var articolo;                       // per salvare il dome dell'articolo
+var n_elementi;                     // per salvare il numero di elementei dell'articolo
+var lista_articoli = [];            // lista che contine i nomi degli articoli
+var articolo_presente = false;      // per sapere se un articolo è presente o meno
+var riga_articolo_presente;         // per memorizzare riga articolo presente
 
-var visibile = false;
-var n_articoli_max = 30;
-var riga = 1;
-var articolo;                       
-var n_elementi;                     
-var lista_articoli = [];            
-var articolo_presente = false;     
-var riga_articolo_presente;         
-
-
+/**
+ * @brief funzione che resetta i compi di input  
+ */
 
 function reset()
 {
     document.getElementById("item").value = "";
     document.getElementById("n_item").value = "";
 }
+
+/**
+ * @brief funzione che rende visibile e invisibile il div_input e chiama superato_limite()
+ * @return una modifica alla pagina con la visibilita o l'invisibilita del div_input
+ */
 
 function visibile_invisibile()
 {
@@ -29,9 +36,14 @@ function visibile_invisibile()
         visibile=true;
     }
     reset();
-    superato_limite()
+    superato_limite();
 }
 
+/**
+ * @brief  funzine che modifica il limite ai articoli e chiama la funzione superato_limite
+ * @return ritorna un messaggio che conferma la modifica del limite massimo
+ *          
+ */ 
 
 function modificalimite()
 {
@@ -40,6 +52,11 @@ function modificalimite()
     superato_limite();
 }
 
+/**
+ * @brief funzione che avverte se viene superato il numero di articoli
+ * @return ritorna un messaggio che avvisa che il numero di articoli presenti in tabella è
+ *         superiore al limite di articoli massimo 
+ */
 
 function superato_limite()
 {
@@ -48,6 +65,15 @@ function superato_limite()
         alert("ATTENZIONE il limite massimo e' inferiore al numero di Articoli presenti nella tabella");
     }
 }
+
+/**
+ * @brief aggiunge un articolo con vari controlli e chiama le fuzione reset() e superato_limite();
+ * @return ritorna una modifica alla tabella o un messagio perchè non è stato possibile.
+ *         Non permetto di aggiungere nuovi articoli se supera il limite massimo ma permetto
+ *         l'aumetare del valore degli articoli presenti nella tabella gia che non aumenta 
+ *         il numero di articoli nella tabella ma ne modifica il contenuto
+ */         
+
 function addItem()
 {
     superato_limite();
@@ -58,6 +84,7 @@ function addItem()
     {
         alert("Non puoi mettere piu di "+n_articoli_max+" articoli nella tabella");
         visibile_invisibile();
+        superato_limite();
         return;
     }
     if(lista_articoli.length == 0)
@@ -102,8 +129,9 @@ function addItem()
         }   
         articolo_presente = false;            
     }
-   visibile_invisibile();
+   visibile_invisibile();    
 }
+
 
 
 
