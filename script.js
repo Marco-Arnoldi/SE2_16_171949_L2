@@ -1,6 +1,7 @@
 
 var visibile = false;
 var n_articoli_max = 30;
+var riga = 1;
 
 
 function reset()
@@ -22,6 +23,7 @@ function visibile_invisibile()
         visibile=true;
     }
     reset();
+    superato_limite();
 }
 
 
@@ -29,4 +31,14 @@ function modificalimite()
 {
     n_articoli_max = document.getElementById("limite_max").value;
     alert("Limite massimo di articoli impostato a "+n_articoli_max);
+    superato_limite();
+}
+
+
+function superato_limite()
+{
+    if((riga-1)>n_articoli_max)
+    {
+        alert("ATTENZIONE il limite massimo e' inferiore al numero di Articoli presenti nella tabella");
+    }
 }
