@@ -67,26 +67,17 @@ function superato_limite()
 }
 
 /**
- * @brief aggiunge un articolo con vari controlli e chiama le fuzione reset() e superato_limite();
- * @return ritorna una modifica alla tabella o un messagio perchè non è stato possibile.
- *         Non permetto di aggiungere nuovi articoli se supera il limite massimo ma permetto
- *         l'aumetare del valore degli articoli presenti nella tabella gia che non aumenta 
- *         il numero di articoli nella tabella ma ne modifica il contenuto
+ * @brief aggiunge un articolo allla tabella e chiama la funzione visibile invisibile
+ * @return ritorna una modifica alla tabella con l'agiunta di un nuovo articolo o se 
+ *          l'articolo è gia presente viene aggiornato il numero di elementi 
+ *         
  */         
 
 function addItem()
 {
-    superato_limite();
     articolo = document.getElementById("item").value;
     n_elementi =  document.getElementById("n_item").value;
     var table = document.getElementById("myTable");
-    if(n_articoli_max == 0 && riga == 1)
-    {
-        alert("Non puoi mettere piu di "+n_articoli_max+" articoli nella tabella");
-        visibile_invisibile();
-        superato_limite();
-        return;
-    }
     if(lista_articoli.length == 0)
     {
         lista_articoli [riga-1] = articolo;
@@ -96,6 +87,7 @@ function addItem()
         cell1.innerHTML = articolo;
         cell2.innerHTML = n_elementi;
         riga = riga + 1;
+        
     }
     else
     {
@@ -113,12 +105,6 @@ function addItem()
         }
         else
         {
-            if(riga > n_articoli_max)
-            {
-                alert("Non puoi mettere piu di "+n_articoli_max+" articoli nella tabella");
-                visibile_invisibile();
-                return;          
-            }
             lista_articoli [riga-1] = articolo;
             var row = table.insertRow(riga);
             var cell1 = row.insertCell(0);
