@@ -1,0 +1,40 @@
+
+div.div_input
+{
+    display: none;
+}
+
+input.limite_max
+{
+    width: 50px;
+}
+
+
+table
+{
+    border: 1px solid black;
+}
+
+th
+{
+    color: red;
+    border: 1px solid black;
+}
+
+th.colonna1
+{
+  width: 220px; 
+}
+
+th.colonna2
+{
+    width: 180px;
+
+}
+
+td
+{
+    color: blue;
+    border: 1px solid black;
+    text-align: center;
+}
