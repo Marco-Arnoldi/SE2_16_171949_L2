@@ -11,13 +11,13 @@
         <div class="div_input" id="div_input">
             Articolo  : <input type="text" id="item">
             N_elementi: <input type="text" id="n_item"><br><br>
-            <button>Aggiungi articolo alla tabella</button>
+            <button onclick="addItem()" type="submit">Aggiungi articolo alla tabella</button>
             <br><br>
         </div>
         Limite massimo di articoli :<input type="text" id="limite_max" class="limite_max" value="30">
         <button onclick="modificalimite()">Modifica limite massimo</button>
         <br><br>
-        <table>
+        <table id="myTable">
             <th class="colonna1"></t>Articolo</th>
             <th class="colonna2">Numero elementi</th>
         </table>
